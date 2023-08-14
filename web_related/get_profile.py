@@ -40,5 +40,3 @@ def get_profile(__username):
     return {'display_name': display_name, 'username': username, 'about': about, 'location': location,
             'creation_year': account_year}
 
-
-print(get_profile("elonmusk"))
