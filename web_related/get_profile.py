@@ -22,7 +22,7 @@ def get_profile(__username):
                                    "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div[1]/div/div[2]/div/div/div/span").text
     try:
         about = driver.find_element(By.XPATH,
-                                    "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[3]/div/div/span").text
+                                    "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[3]/div/div").text
     except:
         about = "N/A"
     try:
@@ -37,6 +37,5 @@ def get_profile(__username):
     account_year = account_year.split(" ")
     account_year = account_year[2]
 
-    return {'display_name': display_name, 'username': username, 'about': about, 'location': location,
-            'creation_year': account_year}
+    return {'display_name': display_name, 'username': username, 'about': about, 'location': location, 'creation_year': account_year}
 
