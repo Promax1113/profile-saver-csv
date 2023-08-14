@@ -41,4 +41,4 @@ def get_profile(__username, webpage):
             'creation_date': account_date}
 
 
-print(get_profile("MrBeast", "baller"))
+print(get_profile("promax1113", "baller"))
