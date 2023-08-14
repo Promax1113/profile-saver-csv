@@ -1,3 +1,4 @@
+import datetime
 import time
 
 from selenium import webdriver
@@ -17,8 +18,8 @@ def get_profile(__username, webpage):
     display_name = driver.find_element(By.XPATH,
                                        "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div[1]/div/div[1]/div/div/span/span[1]").text
 
-    username = driver.find_element((By.XPATH,
-                                    "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div[1]/div/div[2]/div/div/div/span")).text
+    username = driver.find_element(By.XPATH,
+                                   "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[2]/div[1]/div/div[2]/div/div/div/span").text
     try:
         about = driver.find_element(By.XPATH,
                                     "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[3]/div/div/span").text
@@ -26,13 +27,16 @@ def get_profile(__username, webpage):
         about = "N/A"
     try:
         location = driver.find_element(By.XPATH,
-                                       "div#react-root > div > div > div:nth-of-type(2) > main > div > div > div > div > div > div:nth-of-type(3) > div > div > div > div > div:nth-of-type(4) > div > span > span > span").text
+                                       "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[4]/div/span[1]/span/span").text
     except:
         location = "N/A"
 
     account_date = driver.find_element(By.XPATH,
-                                       "div#react-root > div > div > div:nth-of-type(2) > main > div > div > div > div > div > div:nth-of-type(3) > div > div > div > div > div:nth-of-type(4) > div > span:nth-of-type(2) > span").text
+                                       "/html/body/div[1]/div/div/div[2]/main/div/div/div/div[1]/div/div[3]/div/div/div/div/div[4]/div/span[2]/span").text
 
+    account_date = account_date.split(" ")
+    account_date = account_date[1] + account_date[2]
+    account_date = datetime.datetime.strptime(account_date, "%m%Y")
     return {'display_name': display_name, 'username': username, 'about': about, 'location': location,
             'creation_date': account_date}
 
